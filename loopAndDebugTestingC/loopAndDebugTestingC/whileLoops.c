@@ -16,7 +16,7 @@ int main() {
 	}
 
 	average = total / (count - 1);
-	printf("The class average was %d\%.\n", average);
+	printf("The class average was %d%%.\n", average);
 
 
 
