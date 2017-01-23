@@ -49,7 +49,7 @@ int main() {
 		//Assign the input value to the 'number' variable.
 		scanf("%d", &number); 
 
-		//1-line if statement to check if the new 'number' is greater then the 
+		//1-line if statement to check if the new 'number' is greater than the 
 		//current 'largest' and update as necessary...
 		if (number > largest) largest = number; 
 	} //Jump back to loop condition
