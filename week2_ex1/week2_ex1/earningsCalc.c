@@ -7,6 +7,8 @@ $200 plus 9% of $5000, or a total of $650.
 This program will take as input, each salesperson's gross sales for last week and 
 will calculate and display that salesperson's earnings, processing one 
 salesperson's figures at a time. 
+
+By John Byrne
 */
 
 #include <stdio.h> //Get access to Standard Library functions
