@@ -1,0 +1,5 @@
+﻿  largestNumber.c
+c:\users\jbyrne\onedrive - netgear\personal\nuig masters degree\mct609 fundamentals of programming\vs projects\nuig\week2_ex2\week2_ex2\largestnumber.c(48): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+  week2_ex2.vcxproj -> C:\Users\jbyrne\OneDrive - Netgear\Personal\NUIG Masters Degree\MCT609 Fundamentals of Programming\VS Projects\NUIG\week2_ex2\Debug\week2_ex2.exe
+  week2_ex2.vcxproj -> C:\Users\jbyrne\OneDrive - Netgear\Personal\NUIG Masters Degree\MCT609 Fundamentals of Programming\VS Projects\NUIG\week2_ex2\Debug\week2_ex2.pdb (Full PDB)
