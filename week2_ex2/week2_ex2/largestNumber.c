@@ -30,7 +30,7 @@ while counter <= 10
 Print the 'largest' number
 */
 
-#include <stdio.h>
+#include <stdio.h> //Gain access to Standard Library functions.
 
 int main() {
 
