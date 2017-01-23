@@ -21,6 +21,8 @@ int main() {
 	scanf("%f", &sales); //Read-in user input and assign the value to the sales variable.
 
 	while (sales != -1) { //Check for continuation (not termination) condition
+		//Consider handling a negative sales figure input??
+
 		printf("Salary is: $%.2f\n", 200 + (sales * 0.09)); //Display Salary based on commission.
 		
 		//Prompt user for another sales figure...
