@@ -12,6 +12,8 @@ counter: A counter to count to 10 (i.e., to keep track of how many numbers have
          been input and to determine when all 10 numbers have been processed)
 number: The current number input to the program
 largest: The largest number found so far
+
+by John Byrne
 */
 
 /* Pseudocode...
