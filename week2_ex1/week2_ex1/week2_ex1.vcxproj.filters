@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testGit.c">
+    <ClCompile Include="earningsCalc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
