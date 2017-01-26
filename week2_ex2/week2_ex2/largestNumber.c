@@ -17,14 +17,18 @@ by John Byrne
 */
 
 /* Pseudocode...
+When given 10 numbers, identify which is the largest number.
+...
 Declare and Initialise variables.
 counter = 1
 number = 0
-largest = (a very small number)
+Initialize 'largest' at runtime.
 
 while counter is less than or equal to 10
 	Ask user to input a 'number'
-	if the 'number' > 'largest', then largest = number
+	On the first pass, set largest to number
+	there after...
+	    if the 'number' > 'largest', then largest = number
 	increment counter
 
 Print the 'largest' number
@@ -57,7 +61,7 @@ int main() {
 		scanf("%d", &number); 
 	
 		//I need to initialize variable 'largest' during the first pass
-		if (counter == 2) { 
+		if (counter == 2) {
 			largest = number;
 		}
 		//For every other pass, I just want to check if the new 'number' is 
@@ -71,6 +75,6 @@ int main() {
 	//Output final result to user...
 	printf("\nThe Largest number you entered was: %d.\n\n", largest);
 	
-
+	//Assuming successful completion of the program...
 	return(0);
-}
+} //End of main()
