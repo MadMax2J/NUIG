@@ -20,10 +20,10 @@ by John Byrne
 Declare and Initialise variables.
 counter = 1
 number = 0
-largest = 0
+largest = (a very small number)
 
-while counter <= 10
-	Ask user to input a sales 'number'
+while counter is less than or equal to 10
+	Ask user to input a 'number'
 	if the 'number' > 'largest', then largest = number
 	increment counter
 
@@ -34,9 +34,16 @@ Print the 'largest' number
 
 int main() {
 
-	int counter = 1;	//A counter to count to 10 (i.e. 10 numbers have been processed)
-	int number = 0;		//Most recent number input by the user.
-	int largest = -999;	//The largest number input by the user so far.
+	//Declare and initialize my variables...
+	unsigned int counter = 1;	//A counter to count to 10. 
+								//'unsigned' because it'll always be +ive.
+	int number = 0;		//This will hold the most recent number input by the user.
+
+	//Don't need to initialise 'largest' as this will be explicitly assigned 
+	//during the execution of the program.
+	//Also, if I was to initialize to ZERO, what if all user input values were -ive?
+	int largest;		
+						
 
 	//User instructions...
 	puts("Please Enter 10 numbers and I'll tell you which was the largest...");
@@ -44,14 +51,21 @@ int main() {
 	while(counter <= 10) { //Need to do this 10 times.
 		//Prompt for each number to be entered...
 		//Uses a Post-increment operator to update counter after it's used.
-		printf("Number %d: ", counter++); 
+		printf("Number %2d: ", counter++); 
 		
 		//Assign the input value to the 'number' variable.
 		scanf("%d", &number); 
+	
+		//I need to initialize variable 'largest' during the first pass
+		if (counter == 2) { 
+			largest = number;
+		}
+		//For every other pass, I just want to check if the new 'number' is 
+		//greater than the current 'largest' and update as necessary...
+		else if (number > largest) {	
+			largest = number;
+		}
 
-		//1-line if statement to check if the new 'number' is greater than the 
-		//current 'largest' and update as necessary...
-		if (number > largest) largest = number; 
 	} //Jump back to loop condition
 	
 	//Output final result to user...
