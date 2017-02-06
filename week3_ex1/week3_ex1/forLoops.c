@@ -10,6 +10,7 @@ d. 19, 27, 35, 43, 51
 by John Byrne - 30th January 2017
 */
 
+//Access the Standard Library
 #include <stdio.h>
 
 int main() {
@@ -25,7 +26,7 @@ int main() {
 
 	// Print group 'b.'
 	printf("%s", "b. "); 
-	for (int b = 3; b <= 23; b += 5) {
+	for (int b = 3; b <= 23; b += 5) { //From 3 to 23, incrementing in jumps of 5
 		printf("%5d", b);
 	}	//End of for
 	puts("\n");
@@ -34,7 +35,7 @@ int main() {
 	
 	// Print group 'c.'
 	printf("%s", "c. ");
-	for (int c = 20; c >= -10; c -= 6) {
+	for (int c = 20; c >= -10; c -= 6) { //From 20 to -10, decrementing in jumps of 6
 		printf("%5d", c);
 	}	//End of for
 	puts("\n");
@@ -43,7 +44,7 @@ int main() {
 	
 	// Print group 'd.'
 	printf("%s", "d. ");
-	for (int d = 19; d <= 51; d += 8) {
+	for (int d = 19; d <= 51; d += 8) {	//From 19 to 51, incrementing in jumps of 8
 		printf("%5d", d);
 	}	//End of for
 	puts("\n");

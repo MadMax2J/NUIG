@@ -1,7 +1,6 @@
 /*
-One interesting application of computers is drawing graphs and bar charts (sometimes called ?histograms?).
-Write a program that first reads and stores five numbers (each between 1 and 30). 
-Then, for each number read, your program should print a line containing that number of adjacent asterisks 
+A program that first reads and stores five numbers (each between 1 and 30). 
+Then, for each number read, print a line containing that number of adjacent asterisks 
 (e.g. for the number seven, it should print *******), so that it displays five rows of asterisks.
 
 by John Byrne - 30th January 2017
@@ -18,7 +17,7 @@ int main() {
 
 	
 	////////////////////////////////////////////////////////////////////////////
-	////  Get user input...
+	//// Get user input...
 	////////////////////////////////////////////////////////////////////////////
 	int validNumberEntry = 0;	//ZERO == FALSE. We start without a valid series of numbers
 	
@@ -47,12 +46,13 @@ int main() {
 		{
 			//Input data was good!!
 			validNumberEntry = 1;	//Non-Zero == TRUE
-		}
-	}
+		}//End of 'if/else'
+
+	}//Back to 'while' condition
 	
 
 	////////////////////////////////////////////////////////////////////////////
-	//  Generate bar graph for the user...
+	//// Generate bar graph for the user...
 	////////////////////////////////////////////////////////////////////////////
 	puts("\n\n\nBar graph of your number series...\n");
 	
