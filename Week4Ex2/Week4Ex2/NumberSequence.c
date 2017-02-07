@@ -34,7 +34,7 @@ the following steps for this exercise:
 #include <time.h>
 
 //Define my constants
-#define TERMS 30	//The number of terms in the series to calculate.
+#define TERMS 20	//The number of terms in the series to calculate.
 
 //Declare my function prototypes
 void welcome();				//A Welcome Message
@@ -44,7 +44,7 @@ void delay();				//A 'delay' function
 unsigned long long int recursiveFactorial(unsigned int number);	//Recursive Factorial function
 unsigned long long int iterativeFactorial(unsigned int number);	//Iterative Factorial function
 
-
+//Simplified main() function
 int main() {
 
 	welcome();			//Display the Welcome Message
@@ -82,7 +82,7 @@ void welcome() {
 
 /*recursiveTest
 This function calculates the time it takes to calculate Euler's number 
-using 20 Factorial terms, calculated with a Recursive Factorial function call. 
+using TERMS Factorial terms, calculated with a Recursive Factorial function call. 
 
 We then output the calculated number and the time taken to complete the task.
 */
@@ -116,7 +116,7 @@ void recursiveTest() {
 
 /*iterativeTest
 This function calculates the time it takes to calculate Euler's number
-using 20 Factorial terms, calculated with a Recursive Factorial function call.
+using TERMS Factorial terms, calculated with a Recursive Factorial function call.
 
 We then output the calculated number and the time taken to complete the task.
 */
