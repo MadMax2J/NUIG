@@ -32,32 +32,33 @@ the following steps for this exercise:
 //Access C Standard Library
 #include <stdio.h>
 #include <time.h>
-#include <math.h>
 
 //Define my constants
-#define TERMS 20				//The number of terms in the series to calculate
+#define TERMS 20				//The number of terms in the series to calculate. 
 #define TEST_REPEAT_COUNT 10000	//How many times should we repeat the factorial processes tests
 
 //Declare my function prototypes
-void displayWelcome();				//A Welcome Message
+void displayWelcome();		//A Welcome Message
 double recursiveTest();		//The Recursive Function test
 double iterativeTest();		//The Iterative Function test
 unsigned long long int recursiveFactorial(unsigned int number);	//Recursive Factorial function
 unsigned long long int iterativeFactorial(unsigned int number);	//Iterative Factorial function
-void displayVerdict(double recursiveTestDuration, double iterativeTestDuration);
+void displayVerdict(double recursiveTestDuration, double iterativeTestDuration);	//Outputs results to the user
 
 //Simplified main() function
 int main() {
-
+	
 	displayWelcome();			//Display the Welcome Message
 	
+	//Requirement #4 - Instrument your code to measure time for the recursive and iterative loop methods
 	//Declare variables for my function return values.
-	double recursiveTestDuration;	//Using 'long double' type 
+	double recursiveTestDuration; 
 	double iterativeTestDuration;
 
 	recursiveTestDuration = recursiveTest();	//Perform the Recursive Function Test
 	iterativeTestDuration = iterativeTest();	//Perform the Iterative Function Test
 
+	//Requirement #5 - Present your timing results
 	displayVerdict(recursiveTestDuration, iterativeTestDuration);
 	
 	return(0);			//Assuming program completed successfully
@@ -89,15 +90,18 @@ void displayWelcome() {
 	puts("\n\n");
 }
 
-/*recursiveTest
-This function calculates the time it takes to calculate Euler's number 
+/*Requirement #2 - Use the factorial function to calculate ‘e’
+recursiveTest
+This function returns the time it takes to calculate Euler's number 
 using 'TERMS' Factorial terms, calculated with a Recursive Factorial function call. 
 
 The test is repeated 'TEST_REPEAT_COUNT' times, as the Standard Library C count()
 function's resolution is system dependant. On some High Performance systems,
-calculating Euler's number by itself, doesn't register with the count() function.
+calculating Euler's number only once, doesn't register with the count() function.
 
 We then output the calculated number and the time taken to complete the task.
+
+return duration – Time taken to complete test.
 */
 double recursiveTest() {
 	long double eRecursive;			//Result of Number Series to be calculated
@@ -108,7 +112,7 @@ double recursiveTest() {
 	puts("Starting Euler's Number calculation via Recursive function...");
 	beforeTime = clock();	//Record the current number of clock ticks since program launched
 
-	//Modern computers can do this so quickly, so I repeat the process a number of times...
+	//Modern computers can do this so quickly, so I repeat the process TEST_REPEAT_COUNT times...
 	for (int x = 1; x <= TEST_REPEAT_COUNT; x++) {
 		eRecursive = 0.0;
 		//Calculate Euler's number via the formula...
@@ -120,7 +124,7 @@ double recursiveTest() {
 
 	afterTime = clock();	//Record the current number of clock ticks since program launched
 
-	//Clock ticks 'After' minus Clock ticks 'Before' equals process duration.
+	//Clock ticks 'After' minus Clock ticks 'Before' equals process ticks.
 	//Display duration in seconds, by dividing by the system constant 'CLOCKS_PER_SEC' from <time.h>
 	duration = (double)(afterTime - beforeTime) / CLOCKS_PER_SEC;
 	
@@ -130,15 +134,18 @@ double recursiveTest() {
 	return duration;
 }//End of function recursiveTest()
 
-/*iterativeTest
-This function calculates the time it takes to calculate Euler's number
+/*Requirement #3 – Calculate ‘e’ using an iterative loop
+iterativeTest
+This function returns the time it takes to calculate Euler's number
 using 'TERMS' Factorial terms, calculated with an Iterative Factorial function call.
 
 The test is repeated 'TEST_REPEAT_COUNT' times, as the Standard Library C count() 
 function's resolution is system dependant. On some High Performance systems, 
-calculating Euler's number by itself, doesn't register with the count() function.
+calculating Euler's number only once, doesn't register with the count() function.
 
 We then output the calculated number and the time taken to complete the task.
+
+return duration – Time taken to complete test.
 */
 double iterativeTest() {
 	long double eIterative;			//Result of Number Series to be calculated	
@@ -149,7 +156,7 @@ double iterativeTest() {
 	puts("Starting Euler's Number calculation via Iterative function...");
 	beforeTime = clock();	//Record the current number of clock ticks since program launched
 
-	//Modern computers can do this so quickly, so I repeat the process a number of times...
+	//Modern computers can do this so quickly, so I repeat the process TEST_REPEAT_COUNT times...
 	for (int x = 1; x <= TEST_REPEAT_COUNT; x++) {
 		eIterative = 0.0;
 		//Calculate Euler's number via the formula...
@@ -161,7 +168,7 @@ double iterativeTest() {
 
 	afterTime = clock();	//Record the current number of clock ticks since program launched
 
-	//Clock ticks 'After' minus Clock ticks 'Before' equals process duration.
+	//Clock ticks 'After' minus Clock ticks 'Before' equals process ticks.
 	//Display duration in seconds, by dividing by the system constant 'CLOCKS_PER_SEC' from <time.h>
 	duration = (double)(afterTime - beforeTime) / CLOCKS_PER_SEC;
 
@@ -174,7 +181,7 @@ double iterativeTest() {
 
 //Requirement #1 - "Code Reuse"
 //Taken from (Deitel. P, Deital. H, 2013)
-// ** NOTE ** - Internal function comments are unchanged from source
+// ** NOTE ** - Internal function comments are unchanged from source. Only change made, was function name.
 //
 //recursive definition of function recursiveFactorial
 unsigned long long int recursiveFactorial(unsigned int number)
