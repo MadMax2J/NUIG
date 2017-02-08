@@ -32,27 +32,34 @@ the following steps for this exercise:
 //Access C Standard Library
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 //Define my constants
 #define TERMS 20				//The number of terms in the series to calculate
 #define TEST_REPEAT_COUNT 10000	//How many times should we repeat the factorial processes tests
 
 //Declare my function prototypes
-void welcome();				//A Welcome Message
-void recursiveTest();		//The Recursive Function test
-void iterativeTest();		//The Iterative Function test
+void displayWelcome();				//A Welcome Message
+double recursiveTest();		//The Recursive Function test
+double iterativeTest();		//The Iterative Function test
 unsigned long long int recursiveFactorial(unsigned int number);	//Recursive Factorial function
 unsigned long long int iterativeFactorial(unsigned int number);	//Iterative Factorial function
+void displayVerdict(double recursiveTestDuration, double iterativeTestDuration);
 
 //Simplified main() function
 int main() {
 
-	welcome();			//Display the Welcome Message
+	displayWelcome();			//Display the Welcome Message
 	
-	recursiveTest();	//Perform the Recursive Function Test
+	//Declare variables for my function return values.
+	double recursiveTestDuration;	//Using 'long double' type 
+	double iterativeTestDuration;
 
-	iterativeTest();	//Perform the Iterative Function Test
+	recursiveTestDuration = recursiveTest();	//Perform the Recursive Function Test
+	iterativeTestDuration = iterativeTest();	//Perform the Iterative Function Test
 
+	displayVerdict(recursiveTestDuration, iterativeTestDuration);
+	
 	return(0);			//Assuming program completed successfully
 
 } //End of main()
@@ -60,7 +67,7 @@ int main() {
 /*welcome
 Displays an introduction to the user, describing what this program will do.
 */
-void welcome() {
+void displayWelcome() {
 	puts("Recursive vs. Iterative function performance comparison.\n");
 	puts("This program calculates an approximate value for Euler's number, with the");
 	printf("equation... e = 1/0! + 1/1! + 1/2! + 1/3! + ... for %d terms.\n\n", TERMS);
@@ -92,10 +99,10 @@ calculating Euler's number by itself, doesn't register with the count() function
 
 We then output the calculated number and the time taken to complete the task.
 */
-void recursiveTest() {
+double recursiveTest() {
 	long double eRecursive;			//Result of Number Series to be calculated
 	clock_t beforeTime, afterTime;	//Before process and After process time variables
-	long double duration;			//Calculated duration of test variable
+	double duration;				//Calculated duration of test variable
 
 	//Start test...
 	puts("Starting Euler's Number calculation via Recursive function...");
@@ -115,12 +122,12 @@ void recursiveTest() {
 
 	//Clock ticks 'After' minus Clock ticks 'Before' equals process duration.
 	//Display duration in seconds, by dividing by the system constant 'CLOCKS_PER_SEC' from <time.h>
-	duration = (long double)(afterTime - beforeTime) / CLOCKS_PER_SEC;
+	duration = (double)(afterTime - beforeTime) / CLOCKS_PER_SEC;
 	
 	//Output calculated figure and time taken... 
 	printf("\te = %.14Lf\n", eRecursive);	//Found that we lose accuracy after 14dp
-	printf("\tCalculation completed in a time of %Lf seconds\n\n", duration);
-	
+	printf("\tCalculation completed in a time of %f seconds\n\n", duration);
+	return duration;
 }//End of function recursiveTest()
 
 /*iterativeTest
@@ -133,10 +140,10 @@ calculating Euler's number by itself, doesn't register with the count() function
 
 We then output the calculated number and the time taken to complete the task.
 */
-void iterativeTest() {
+double iterativeTest() {
 	long double eIterative;			//Result of Number Series to be calculated	
 	clock_t beforeTime, afterTime;	//Before process and After process time variables
-	long double duration;			//Calculated duration of test variable
+	double duration;				//Calculated duration of test variable
 
 	//Start test...
 	puts("Starting Euler's Number calculation via Iterative function...");
@@ -156,12 +163,12 @@ void iterativeTest() {
 
 	//Clock ticks 'After' minus Clock ticks 'Before' equals process duration.
 	//Display duration in seconds, by dividing by the system constant 'CLOCKS_PER_SEC' from <time.h>
-	duration = (long double)(afterTime - beforeTime) / CLOCKS_PER_SEC;
+	duration = (double)(afterTime - beforeTime) / CLOCKS_PER_SEC;
 
 	//Output calculated figure and time taken... 
 	printf("\te = %.14Lf\n", eIterative);	//Found that we lose accuracy after 14dp
-	printf("\tCalculation completed in a time of %Lf seconds\n\n", duration);
-
+	printf("\tCalculation completed in a time of %f seconds\n\n", duration);
+	return duration;
 }//End of function iterativeTest()
 
 
@@ -198,5 +205,34 @@ unsigned long long int iterativeFactorial(unsigned int n)
 		factorial *= count;						//Increment factorial value with product of 'count'
 	}
 	return factorial;							//return the calculated factorial value.
+
+}
+
+/*displayVerdict
+This function take in the two results from our Recursive and Iterative function tests and
+determines how much faster one function was over the other. The result is then displayed
+to the user.
+
+parameter recursiveTestDuration - The Recursive function's Test Duration
+parameter iterativeTestDuration - The Iterative function's Test Duration
+*/
+void displayVerdict(double recursiveTestDuration, double iterativeTestDuration) {
+
+	//Confirm that the Recursive function took longer.
+	// **NOTE** - This should nearly always be the case, so it's the first condition to check.
+	if (recursiveTestDuration > iterativeTestDuration) {
+		printf("\nThe Iterative process was %.1f times faster than the Recursive process.\n\n", 
+			recursiveTestDuration / iterativeTestDuration);
+	}
+	//This is unlikely, but we should allow for the possibility...
+	else if (recursiveTestDuration < iterativeTestDuration) {
+
+		printf("\nThe Recursive process was %.1f times faster than the Iterative process.\n\n", 
+			iterativeTestDuration / recursiveTestDuration);
+	}
+	//Again unlikely...
+	else {
+		puts("\nThere was no performance difference between the Recursive and Iterative functions.\n");
+	}
 
 }
